@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>addition</title>
+
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <form class="calculatrice">
+    <label for="">Nombre 1</label><input step="0.01" class="nb1" type="text" />
+    <br />
+    <label for="">Nombre 2</label><input step="0.01" class="nb2" type="text" />
+    <br />
+    <button>Addition</button>
+  </form>
+
+  <div class="resultat"></div>
+
+  <body>
+    <script>
+      //crée des variable a prtir du DOM
+      const calculatrice = document.querySelector(".calculatrice");
+      const nb1 = calculatrice.querySelector(".nb1");
+      const nb2 = calculatrice.querySelector(".nb2");
+      const resultat = document.querySelector(".resultat");
+      // On ecoute les evenment et on crée une fonction
+      calculatrice.addEventListener("submit", function () {
+        event.preventDefault(); // on bloque le refresh du navigateur
+        // on recupère les VALEUR des variable et on les transphorme en nombre
+        let value1 = parseFloat(nb1.value);
+        let value2 = parseFloat(nb2.value);
+        //verfication des valleur
+        if (isNaN(value1) || isNaN(value2)) {
+          //si c'est pas un Nombre
+          resultat.classList.add("error");
+          resultat.innerHTML = `<strong> Pas un Nombre </strong>`;
+        } else {
+          // si c'est un nombre
+          let result = value1 + value2; // on fais l'opération
+          resultat.classList.remove("error");
+          resultat.innerHTML = `<strong> Résultat : </strong> ${result}`;
+          calculatrice.reset();
+          nb1.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
