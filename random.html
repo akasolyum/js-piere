@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Js Piere</title>
+
+    <style>
+      .hiden {
+        display: none;
+      }
+      .petit {
+        color: RED;
+      }
+      .grand {
+        color: blue;
+      }
+      .juste {
+        color: green;
+      }
+    </style>
+  </head>
+  <form class="userform">
+    <label for=""> ton nombre</label>
+    <input class="yournumber" type="text" />
+    <button>send</button>
+  </form>
+  <div class="resultat"></div>
+  <body>
+    <script>
+      let random1;
+      const yournum = document.querySelector(".yournumber");
+      const resultat = document.querySelector(".resultat");
+      const user = document.querySelector(".userform");
+      random1 = Math.floor(Math.random() * 100);
+      console.error(random1);
+      user.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        let value1 = parseFloat(yournum.value);
+
+        if (value1 > random1) {
+          resultat.innerHTML = `<strong>Plus grand que l'ordinateur </strong>`;
+        } else if (value1 < random1) {
+          resultat.innerHTML = `<strong>Plus petit que l'ordinateur </strong>`;
+        } else {
+          user.classList.add("hiden");
+          resultat.classList.add("juste");
+          resultat.innerHTML = `<strong>Bravo!</strong>`;
+        }
+      });
+    </script>
+  </body>
+</html>

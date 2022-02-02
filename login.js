@@ -16,5 +16,8 @@ login.addEventListener("submit", function (event) {
     resultat.classList.remove("hiden");
   } else {
     notif.classList.remove("hiden");
+    setTimeout(function () {
+      notif.classList.add("hiden");
+    }, 2000);
   }
 });
